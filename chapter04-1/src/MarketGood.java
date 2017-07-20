@@ -65,7 +65,12 @@ public class MarketGood {
 
     public int getDiscountedPrice() { //할인률을 적용시키는 메소드
 
-        return  this.retailPrice - ((this.retailPrice / 100 )*discountRate);
+    //    return  (int) retailPrice * (1 - discountRate / 100.0);
+        return (int) (retailPrice * (1 - discountRate / 100.0));
+        //할인률  =>  원가  *  (1 - 할인률 / 100 )
+        //  할인률의 값이 소수점까지 떨어지기 때문에 double형으로 캐스팅필요
+        // 100.0 으로 나누고  값전체를 다시 int형으로 캐스팅해주면 같음 .
+
     }
 
 
