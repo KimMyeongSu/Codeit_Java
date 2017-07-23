@@ -9,38 +9,9 @@ public class Driver {
     }
 
 
+
     public static void main(String[] args) {
         System.out.println("김신은 " + getSurvivingIndex(20, 5) + "번 자리에 서있으면 됩니다.");
-     //     System.out.println(getSurvivingIndex(20,5));
-
-//
-//        ArrayList<Integer> Person = new ArrayList<>();
-//        int death =5;
-//        int people =20;
-//        int temp=5;
-//
-//        for (int a =1; a <= people; a++) {
-//            Person.add(a);
-//        }
-//
-//        System.out.println(Person);
-//    while (Person.size() != 1) {
-//        System.out.println("Person.get(" + (death - 1) + ") =  " + Person.get(death - 1) + "");
-//        Person.remove(death - 1);
-//        System.out.println();
-//        death = death + (temp -1);
-//
-//        if (death > Person.size()) {
-//            System.out.println("death-Person.size() : " + (death - Person.size()));
-//            death = death - Person.size();
-//            if (death > Person.size()) {
-//                death = death - Person.size();
-//            }
-//        }
-//    }
-//
-//        System.out.println();
-//        System.out.println(Person);
 
     }
 
@@ -48,30 +19,27 @@ public class Driver {
 
     public static int getSurvivingIndex(int n, int k) {
 
-        int result =0;
-        ArrayList<Integer> Person = new ArrayList<>(n);
-        int death =k;
-        int temp =death;
-        int people = n;
+        ArrayList<Integer> Person = new ArrayList<>(n); //사람을 저장할 ArrayList 객체 생성
+         int death =k; //죽어야할 인덱스의 값 초기화
+         int temp =death;
+        int result;
+        int people = n; //사람의 수
 
-        for (int a =1; a <= people; a++) {
+        for (int a =1; a <= people; a++) { //인원수 만큼 반복하며 Array List 에 자리번호 추가
             Person.add(a);
         }
 
 
-        while (Person.size() != 1) {
-           // System.out.println("Person.get(" + (death - 1) + ") =  " + Person.get(death - 1) + "");
-            print_output(Person.get(death - 1) );
-            Person.remove(death - 1);
-           // System.out.println();
-            death = death + (temp -1);
+        while (Person.size() != 1 ) { // Person.size가 1일때 까지 반복
 
-            if (death > Person.size()) {
-                //System.out.println("death-Person.size() : " + (death - Person.size()));
-                death = death - Person.size();
+            print_output(Person.get(death - 1) ); //죽은 인덱스 출력
+            Person.remove(death - 1); //ArrayList에서 제거
+
+            death = death + (temp -1); //다음번에 삭제할 인덱스 값
+
+            while (death <= Person.size() == false) { // death가 List의 size보다 작을때까지 반복
                 if (death > Person.size()) {
                     death = death - Person.size();
-
                 }
             }
         }
